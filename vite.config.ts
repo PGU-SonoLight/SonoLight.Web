@@ -24,5 +24,8 @@ export default defineConfig({
             "@i": folder("./src/icons"),
             "@m": folder("./src/modules")
         }
+    },
+    build: {
+        assetsInlineLimit: 0 // Disable image to b64 (ignore assets missing on retiebox preview site)
     }
 });

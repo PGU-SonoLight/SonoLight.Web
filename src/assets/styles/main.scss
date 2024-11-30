@@ -1,14 +1,19 @@
 @font-face {
-    font-family: "ALiMaMa DongFangDakai";
-    src: url("@/assets/fonts/阿里妈妈东方大楷.ttf") format("truetype");
+    font-family: "ALiMaMa DongFangDakai English";
+    src: url("@a/fonts/ALiMaMaDongFangDaKai_en.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "ALiMaMa DongFangDakai Chinese";
+    src: url("@a/fonts/ALiMaMaDongFangDaKai_zh-CN.ttf") format("truetype");
 }
 
 body {
-    font-family: "ALiMaMa DongFangDakai", sans-serif;
+    font-family: "ALiMaMa DongFangDakai English", "ALiMaMa DongFangDakai Chinese", sans-serif;
 }
 
 button {
-    font-family: "ALiMaMa DongFangDakai", sans-serif;
+    font-family: "ALiMaMa DongFangDakai English", "ALiMaMa DongFangDakai Chinese", sans-serif;
 }
 
 img {

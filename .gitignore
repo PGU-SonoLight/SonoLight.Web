@@ -29,4 +29,6 @@ coverage
 
 *.tsbuildinfo
 
+# Utils
 /utils/
+before-commit.ps1

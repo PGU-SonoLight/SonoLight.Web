@@ -32,8 +32,16 @@ const routes: RouteRecordRaw[] = Object.entries(pages).map(([path, meta]): Route
     };
 });
 
-export default createRouter({
+const router = createRouter({
     history: createWebHistory(),
     routes
 });
 
+
+// Events
+import EventBus from "@m/EventBus";
+
+EventBus.on("ROUTER_TO:CHOOSE_PROJECT", () => router.push("/sonolight"));
+
+// Export
+export default router;

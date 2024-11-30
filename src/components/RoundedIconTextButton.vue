@@ -28,6 +28,7 @@
         align-items: center;
         gap: 12px;
         transition: all .1s ease-in-out;
+        cursor: pointer;
         
         color: $primary;
         background-color: $secondary;

@@ -1,11 +1,13 @@
 <script setup lang="ts">
     import { RouterView } from "vue-router";
+    import Popout from "@c/Popout/Popout.vue";
 </script>
 
 <template>
     <div class="container">
         <RouterView />
     </div>
+    <Popout />
 </template>
 
 <style scoped lang="scss">

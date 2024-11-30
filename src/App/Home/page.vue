@@ -1,10 +1,11 @@
 <script setup lang="ts">
     import { onMounted, ref } from "vue";
+    import EventBus from "@m/EventBus";
     // Components
-    import RoundedIconTextButton from "@/components/RoundedIconTextButton.vue";
+    import RoundedIconTextButton from "@c/RoundedIconTextButton.vue";
     // Icons
-    import IconChevronDoubleRight from "virtual:icons/mdi/chevron-double-right";
-    import IconLaunch from "virtual:icons/mdi/launch";
+    import IconChevronDoubleRight from "@i/MdiChevronDoubleRight.vue";
+    import IconLaunch from "@i/MdiLaunch.vue";
     
     const title_cn = ref<HTMLElement>();
     const title_en = ref<HTMLElement>();
@@ -32,6 +33,10 @@
         setTimeout(() => typeText(title_en.value as HTMLElement, text[1], interval[1]), interval[0] * text[0].length + jobInterval);
         setTimeout(() => typeText(desp.value as HTMLElement, text[2], interval[2]), interval[0] * text[0].length + interval[1] * text[1].length + jobInterval * 2);
     });
+    
+    const sar = () => {
+        EventBus.emit("POPOUT:SIT_BACK_AND_RELAX");
+    };
 </script>
 
 <template>
@@ -47,14 +52,14 @@
             </div>
             <div style="display: flex; gap: 24px; margin-top: 12px">
                 <div class="btn2">
-                    <RoundedIconTextButton :icon="IconLaunch" text="合作服务器" />
+                    <RoundedIconTextButton :icon="IconLaunch" text="合作服务器" @click="sar" />
                 </div>
                 <div class="btn2">
-                    <RoundedIconTextButton :icon="IconLaunch" text="附属工具" />
+                    <RoundedIconTextButton :icon="IconLaunch" text="附属工具" @click="sar" />
                 </div>
             </div>
         </div>
-        <img class="tr-img" src="@/assets/images/tr-icon.webp" alt="">
+        <img class="tr-img" src="@a/images/tr-icon.webp" alt="" />
     </main>
 </template>
 

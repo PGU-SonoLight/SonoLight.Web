@@ -31,4 +31,4 @@ coverage
 
 # Utils
 /utils/
-before-commit.ps1
+genfont.ps1

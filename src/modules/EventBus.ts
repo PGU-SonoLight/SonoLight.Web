@@ -1,5 +1,5 @@
 const eventNames: string[] = [
-    "ROUTER_TO:CHOOSE_PROJECT",
+    "ROUTER:TO",
     "POPOUT:SIT_BACK_AND_RELAX"
 ];
 
@@ -7,7 +7,7 @@ type EventNames = (typeof eventNames)[number];
 
 class EventBus {
     private listeners: Record<EventNames, Set<Function>> = {
-        "ROUTER_TO:CHOOSE_PROJECT": new Set(),
+        "ROUTER:TO": new Set(),
         "POPOUT:SIT_BACK_AND_RELAX": new Set()
     };
 

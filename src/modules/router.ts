@@ -1,18 +1,19 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from "vue-router";
 
-const pages = import.meta.glob(`../App/**/meta.ts`, {
-    eager: true,
-    import: "default"
-});
-const pageComps = import.meta.glob("../App/**/page.vue");
-
-
+// Type Definition
 interface RouteItem {
     path: string;
     component: any;
     meta: any;
     name: string;
 }
+
+// Auto Creator
+const pages = import.meta.glob(`../App/**/meta.ts`, {
+    eager: true,
+    import: "default"
+});
+const pageComps = import.meta.glob("../App/**/page.vue");
 
 const routes: RouteRecordRaw[] = Object.entries(pages).map(([path, meta]): RouteItem => {
     let pageJSPath = path;
@@ -37,11 +38,10 @@ const router = createRouter({
     routes
 });
 
-
 // Events
 import EventBus from "@m/EventBus";
 
-EventBus.on("ROUTER_TO:CHOOSE_PROJECT", () => router.push("/sonolight"));
+EventBus.on("ROUTER:TO", (p: string) => router.push(p));
 
 // Export
 export default router;

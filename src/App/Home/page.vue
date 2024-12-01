@@ -28,7 +28,7 @@
     onMounted(() => {
         const interval = [300, 75, 75];
         const jobInterval = 120;
-        const text = ["声至发光", "Sonoluminescence", "Minecraft 赛博遗产的最终归宿"];
+        const text = ["声致发光", "Sonoluminescence", "Minecraft 赛博遗产的最终归宿"];
         typeText(title_cn.value as HTMLElement, text[0], interval[0]);
         setTimeout(() => typeText(title_en.value as HTMLElement, text[1], interval[1]), interval[0] * text[0].length + jobInterval);
         setTimeout(() => typeText(desp.value as HTMLElement, text[2], interval[2]), interval[0] * text[0].length + interval[1] * text[1].length + jobInterval * 2);
@@ -48,7 +48,8 @@
         </div>
         <div class="tb-box">
             <div class="btn1">
-                <RoundedIconTextButton :icon="IconChevronDoubleRight" text="访问项目" :primary="true" />
+                <RoundedIconTextButton :icon="IconChevronDoubleRight" text="访问项目" :primary="true"
+                                       @click="EventBus.emit('ROUTER:TO', '/sonolight')" />
             </div>
             <div style="display: flex; gap: 24px; margin-top: 12px">
                 <div class="btn2">
@@ -96,6 +97,8 @@
                 font-weight: 400;
                 text-align: left;
                 margin: 18px 0 0 0;
+                height: 58px;
+                line-height: 58px;
             }
         }
         

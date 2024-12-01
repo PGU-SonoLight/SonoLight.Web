@@ -48,8 +48,8 @@
         </div>
         <div class="tb-box">
             <div class="btn1">
-                <RoundedIconTextButton :icon="IconChevronDoubleRight" text="访问项目" :primary="true"
-                                       @click="EventBus.emit('ROUTER:TO', '/sonolight')" />
+                <RoundedIconTextButton :icon="IconChevronDoubleRight" text="访问项目" :primary="true" @click="sar" />
+                <!-- EventBus.emit('ROUTER:TO', '/sonolight') -->
             </div>
             <div style="display: flex; gap: 24px; margin-top: 12px">
                 <div class="btn2">

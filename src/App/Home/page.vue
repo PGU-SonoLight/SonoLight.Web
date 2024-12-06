@@ -1,15 +1,19 @@
 <script setup lang="ts">
-    import { onMounted, ref } from "vue";
+    import { onMounted, type Ref, ref } from "vue";
     import EventBus from "@m/EventBus";
     // Components
     import RoundedIconTextButton from "@c/RoundedIconTextButton.vue";
     // Icons
     import IconChevronDoubleRight from "@i/MdiChevronDoubleRight.vue";
     import IconLaunch from "@i/MdiLaunch.vue";
+    import { getCurrentSizerState } from "@m/Sizer";
     
-    const title_cn = ref<HTMLElement>();
-    const title_en = ref<HTMLElement>();
-    const desp = ref<HTMLElement>();
+    const title_cn_desktop = ref<HTMLElement>();
+    const title_en_desktop = ref<HTMLElement>();
+    const desp_desktop = ref<HTMLElement>();
+    const title_cn_mobile = ref<HTMLElement>();
+    const title_en_mobile = ref<HTMLElement>();
+    const desp_mobile = ref<HTMLElement>();
     
     const typeText = (element: HTMLElement, text: string, interval = 100) => {
         let index = 0;
@@ -25,13 +29,28 @@
         insertNextLetter();
     };
     
+    const getElements = (): Ref<HTMLElement | undefined>[] => {
+        console.log(getCurrentSizerState());
+        switch (getCurrentSizerState()) {
+            case "mobile":
+                return [title_cn_mobile, title_en_mobile, desp_mobile];
+            case "tablet":
+                return [title_cn_mobile, title_en_mobile, desp_mobile];
+            case "desktop":
+                return [title_cn_desktop, title_en_desktop, desp_desktop];
+            case "unknown":
+                // May Cause Issue
+                return [title_cn_mobile, title_en_mobile, desp_mobile];
+        }
+    };
+    
     onMounted(() => {
         const interval = [300, 75, 75];
         const jobInterval = 120;
-        const text = ["声致发光", "Sonoluminescence", "Minecraft 赛博遗产的最终归宿"];
-        typeText(title_cn.value as HTMLElement, text[0], interval[0]);
-        setTimeout(() => typeText(title_en.value as HTMLElement, text[1], interval[1]), interval[0] * text[0].length + jobInterval);
-        setTimeout(() => typeText(desp.value as HTMLElement, text[2], interval[2]), interval[0] * text[0].length + interval[1] * text[1].length + jobInterval * 2);
+        const text = ["声至发光", "Sonoluminescence", "Minecraft 赛博遗产的最终归宿"];
+        typeText(getElements()[0].value as HTMLElement, text[0], interval[0]);
+        setTimeout(() => typeText(getElements()[1].value as HTMLElement, text[1], interval[1]), interval[0] * text[0].length + jobInterval);
+        setTimeout(() => typeText(getElements()[2].value as HTMLElement, text[2], interval[2]), interval[0] * text[0].length + interval[1] * text[1].length + jobInterval * 2);
     });
     
     const sar = () => {
@@ -40,16 +59,15 @@
 </script>
 
 <template>
-    <main>
+    <main id="desktop">
         <div class="tl-box">
-            <p id="titleCn" ref="title_cn"></p>
-            <p id="titleEn" ref="title_en"></p>
-            <p id="desp" ref="desp"></p>
+            <p id="titleCn" ref="title_cn_desktop"></p>
+            <p id="titleEn" ref="title_en_desktop"></p>
+            <p id="desp" ref="desp_desktop"></p>
         </div>
         <div class="tb-box">
             <div class="btn1">
                 <RoundedIconTextButton :icon="IconChevronDoubleRight" text="访问项目" :primary="true" @click="sar" />
-                <!-- EventBus.emit('ROUTER:TO', '/sonolight') -->
             </div>
             <div style="display: flex; gap: 24px; margin-top: 12px">
                 <div class="btn2">
@@ -62,21 +80,44 @@
         </div>
         <img class="tr-img" src="@a/images/tr-icon.webp" alt="" />
     </main>
+    <main id="mobile">
+        <div class="tl-box">
+            <img class="tr-img" src="@a/images/tr-icon.webp" alt="" />
+            <p id="titleCn" ref="title_cn_mobile"></p>
+            <p id="titleEn" ref="title_en_mobile"></p>
+            <p id="desp" ref="desp_mobile"></p>
+        </div>
+        <div class="tb-box">
+            <div class="btn1">
+                <RoundedIconTextButton :icon="IconChevronDoubleRight" text="访问项目" :primary="true" @click="sar" />
+                <!-- EventBus.emit('ROUTER:TO', '/sonolight') -->
+            </div>
+            <div class="btn2">
+                <RoundedIconTextButton :icon="IconLaunch" text="合作服务器" @click="sar" />
+            </div>
+            <div class="btn2">
+                <RoundedIconTextButton :icon="IconLaunch" text="附属工具" @click="sar" />
+            </div>
+        </div>
+    </main>
 </template>
 
 <style scoped lang="scss">
-    main {
+    // Main Styles
+    
+    main#desktop {
         position: relative;
         --color: rgb(255, 245, 226);
+        display: flex;
+        flex-direction: column;
         
         div.tl-box {
-            position: absolute;
-            top: 212px;
-            left: 225px;
+            margin: 12vh 0 5vh 12vw;
+            
             
             p#titleCn {
                 color: var(--color);
-                font-size: 96px;
+                font-size: 550%;
                 font-weight: 100;
                 text-align: left;
                 margin: 0;
@@ -85,7 +126,7 @@
             
             p#titleEn {
                 color: var(--color);
-                font-size: 54px;
+                font-size: 330%;
                 font-weight: 400;
                 text-align: left;
                 margin: 0 0 0 87px;
@@ -93,43 +134,156 @@
             
             p#desp {
                 color: var(--color);
-                font-size: 43.5px;
+                font-size: 290%;
                 font-weight: 400;
                 text-align: left;
                 margin: 18px 0 0 0;
-                height: 58px;
-                line-height: 58px;
             }
         }
         
         div.tb-box {
-            position: absolute;
-            top: 550px;
-            left: 225px;
+            margin: 0 0 0 12vw;
+            
+            div.btn1 {
+                animation: fade-up 0.5s forwards;
+                animation-delay: 4.2s;
+                opacity: 0;
+            }
+            
+            div.btn2 {
+                animation: fade-up 0.5s forwards;
+                animation-delay: 4.4s;
+                opacity: 0;
+            }
         }
         
         img.tr-img {
-            right: 300px;
-            top: 120px;
+            top: 0;
+            right: 12vw;
             position: absolute;
-            width: 357px;
-            height: 430px;
+            width: 15vw;
             filter: brightness(115%);
             opacity: 0;
             animation: fade-left 0.5s forwards;
         }
     }
     
-    div.btn1 {
-        animation: fade-up 0.5s forwards;
-        animation-delay: 4.2s;
-        opacity: 0;
+    main#mobile {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        --color: rgb(255, 245, 226);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 4vh;
+        
+        div.tl-box {
+            
+            img.tr-img {
+                width: 35%;
+                margin-bottom: 1vh;
+            }
+            
+            p#titleCn {
+                color: var(--color);
+                font-size: 300%;
+                font-weight: 100;
+                text-align: left;
+                margin: 0;
+                position: relative;
+            }
+            
+            p#titleEn {
+                color: var(--color);
+                font-size: 210%;
+                font-weight: 400;
+                text-align: left;
+                margin: 0 0 0 87px;
+            }
+            
+            p#desp {
+                color: var(--color);
+                font-size: 160%;
+                font-weight: 400;
+                text-align: left;
+                margin: 1vh auto 0;
+                height: 7vh;
+                line-height: 7vh;
+            }
+        }
+        
+        div.tb-box {
+            display: flex;
+            flex-direction: column;
+            gap: 2vh;
+        }
+        
+        div.btn1 {
+            animation: fade-up 0.5s forwards;
+            animation-delay: 4.2s;
+            opacity: 0;
+        }
+        
+        div.btn2 {
+            animation: fade-up 0.5s forwards;
+            animation-delay: 4.4s;
+            opacity: 0;
+        }
     }
     
-    div.btn2 {
-        animation: fade-up 0.5s forwards;
-        animation-delay: 4.4s;
-        opacity: 0;
+    // Sizer
+    
+    @media (min-width: 320px) {
+        main {
+            &#desktop {
+                display: none;
+            }
+            
+            &#mobile {
+                display: flex;
+            }
+            
+            &#tablet {
+                display: none;
+            }
+        }
+    }
+    
+    // TODO: Design Special UI for Tablet
+    @media (min-width: 768px) {
+        main {
+            &#desktop {
+                display: none;
+            }
+            
+            &#mobile {
+                //display: none;
+                display: flex;
+            }
+            
+            &#tablet {
+                //display: block;
+                display: none;
+            }
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        main {
+            &#desktop {
+                display: block;
+            }
+            
+            &#mobile {
+                display: none;
+            }
+            
+            &#tablet {
+                display: none;
+            }
+        }
     }
     
     @keyframes fade-up {

@@ -26,7 +26,7 @@
         left: -10%;
         right: -10%;
         bottom: -10%;
-        background-image: url("@/assets/images/background-img.webp");
+        background-image: url("@a/images/bg/azure-sea.webp");
         background-size: cover;
         filter: blur(4px);
         z-index: -1;

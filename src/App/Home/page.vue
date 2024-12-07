@@ -47,7 +47,7 @@
     onMounted(() => {
         const interval = [300, 75, 75];
         const jobInterval = 120;
-        const text = ["声至发光", "Sonoluminescence", "Minecraft 赛博遗产的最终归宿"];
+        const text = ["声致发光", "Sonoluminescence", "Minecraft 赛博遗产的最终归宿"];
         typeText(getElements()[0].value as HTMLElement, text[0], interval[0]);
         setTimeout(() => typeText(getElements()[1].value as HTMLElement, text[1], interval[1]), interval[0] * text[0].length + jobInterval);
         setTimeout(() => typeText(getElements()[2].value as HTMLElement, text[2], interval[2]), interval[0] * text[0].length + interval[1] * text[1].length + jobInterval * 2);
@@ -78,11 +78,11 @@
                 </div>
             </div>
         </div>
-        <img class="tr-img" src="@a/images/tr-icon.webp" alt="" />
+        <img class="tr-img" src="../../assets/images/logo.webp" alt="" />
     </main>
     <main id="mobile">
         <div class="tl-box">
-            <img class="tr-img" src="@a/images/tr-icon.webp" alt="" />
+            <img class="tr-img" src="../../assets/images/logo.webp" alt="" />
             <p id="titleCn" ref="title_cn_mobile"></p>
             <p id="titleEn" ref="title_en_mobile"></p>
             <p id="desp" ref="desp_mobile"></p>

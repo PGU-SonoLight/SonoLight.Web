@@ -33,7 +33,6 @@
     };
 
     const getElements = (): Ref<HTMLElement | undefined>[] => {
-        console.log(getCurrentSizerState());
         switch (getCurrentSizerState()) {
             case "mobile":
                 return [title_cn_mobile, title_en_mobile, desp_mobile];
@@ -179,68 +178,6 @@
 <style scoped lang="scss">
     // Main Styles
 
-    main#desktop {
-        position: relative;
-        --color: rgb(255, 245, 226);
-        display: flex;
-        flex-direction: column;
-
-        div.tl-box {
-            margin: 12vh 0 5vh 12vw;
-
-            p#titleCn {
-                color: var(--color);
-                font-size: 550%;
-                font-weight: 100;
-                text-align: left;
-                margin: 0;
-                position: relative;
-            }
-
-            p#titleEn {
-                color: var(--color);
-                font-size: 330%;
-                font-weight: 400;
-                text-align: left;
-                margin: 0 0 0 87px;
-            }
-
-            p#desp {
-                color: var(--color);
-                font-size: 290%;
-                font-weight: 400;
-                text-align: left;
-                margin: 18px 0 0 0;
-            }
-        }
-
-        div.tb-box {
-            margin: 0 0 0 12vw;
-
-            div.btn1 {
-                animation: fade-up 0.5s forwards;
-                animation-delay: 4.2s;
-                opacity: 0;
-            }
-
-            div.btn2 {
-                animation: fade-up 0.5s forwards;
-                animation-delay: 4.4s;
-                opacity: 0;
-            }
-        }
-
-        img.tr-img {
-            top: 0;
-            right: 12vw;
-            position: absolute;
-            width: 15vw;
-            filter: brightness(115%);
-            opacity: 0;
-            animation: fade-left 0.5s forwards;
-        }
-    }
-
     main#mobile {
         width: 100vw;
         height: 100vh;
@@ -347,6 +284,7 @@
                 margin: 1vh auto 0;
                 height: 7vh;
                 line-height: 7vh;
+                width: 91vw;
             }
         }
 
@@ -370,25 +308,70 @@
         }
     }
 
-    // Sizer
+    main#desktop {
+        position: relative;
+        --color: rgb(255, 245, 226);
+        display: flex;
+        flex-direction: column;
 
-    @media (min-width: 320px) {
-        main {
-            &#desktop {
-                display: none;
+        div.tl-box {
+            margin: 12vh 0 5vh 12vw;
+
+            p#titleCn {
+                color: var(--color);
+                font-size: 550%;
+                font-weight: 100;
+                text-align: left;
+                margin: 0;
+                position: relative;
             }
 
-            &#mobile {
-                display: flex;
+            p#titleEn {
+                color: var(--color);
+                font-size: 330%;
+                font-weight: 400;
+                text-align: left;
+                margin: 0 0 0 87px;
             }
 
-            &#tablet {
-                display: none;
+            p#desp {
+                color: var(--color);
+                font-size: 290%;
+                font-weight: 400;
+                text-align: left;
+                margin: 18px 0 0 0;
             }
+        }
+
+        div.tb-box {
+            margin: 0 0 0 12vw;
+
+            div.btn1 {
+                animation: fade-up 0.5s forwards;
+                animation-delay: 4.2s;
+                opacity: 0;
+            }
+
+            div.btn2 {
+                animation: fade-up 0.5s forwards;
+                animation-delay: 4.4s;
+                opacity: 0;
+            }
+        }
+
+        img.tr-img {
+            top: 0;
+            right: 12vw;
+            position: absolute;
+            width: 15vw;
+            filter: brightness(115%);
+            opacity: 0;
+            animation: fade-left 0.5s forwards;
         }
     }
 
-    // TODO: Design Special UI for Tablet
+    // Sizer
+
     @media (min-width: 320px) {
         main {
             &#desktop {

@@ -13,12 +13,16 @@
 <style scoped lang="scss">
     div.container {
         position: relative;
-        background: linear-gradient(to right, rgba(0, 0, 0, 35%), rgba(0, 0, 0, 35%));
+        background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 35%),
+            rgba(0, 0, 0, 35%)
+        );
         background-size: cover;
         overflow: hidden;
         min-height: 100vh;
     }
-    
+
     div.container::before {
         content: "";
         position: absolute;
@@ -32,3 +36,4 @@
         z-index: -1;
     }
 </style>
+

@@ -1,5 +1,7 @@
 {
     "app.sonolight.title": "请选择项目平台",
     "app.sonolight.title_be": "基岩版 · BE",
-    "app.sonolight.title_je": "Java版 · JE"
+    "app.sonolight.title_je": "Java版 · JE",
+    "app.sonolight.title_be_desc": "基岩版（Bedrock Edition，官方通常称为无副标题的 Minecraft）是 由Mojang Studios、Xbox Game Studios 和 SkyBox Labs 开发的多平台版本Minecraft，基于与携带版一脉相承的游戏引擎基岩引擎。",
+    "app.sonolight.title_je_desc": "Minecraft：Java版（Minecraft: Java Edition）是Minecraft的最初版本，由 Mojang Studios为 Windows、macOS 与 Linux开发。Notch于 2009 年 5 月 10 日开始游戏的开发，于 2009 年 5 月 17 日公开发布首个版本。完整的正式版游戏于 2011 年 11 月 18 日的 MINECON 2011 上发布。"
 }

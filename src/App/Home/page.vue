@@ -1,3 +1,4 @@
+div
 <script setup lang="ts">
     import { onMounted, type Ref, ref } from "vue";
     import EventBus from "@m/EventBus";
@@ -95,7 +96,7 @@
                     :icon="IconChevronDoubleRight"
                     text="访问项目"
                     :primary="true"
-                    @click="sar" />
+                    @click="() => EventBus.emit('ROUTER_TO:CHOOSE_PROJECT')" />
             </div>
             <div style="display: flex; gap: 24px; margin-top: 12px">
                 <div class="btn2">
@@ -127,7 +128,7 @@
                     :icon="IconChevronDoubleRight"
                     text="访问项目"
                     :primary="true"
-                    @click="sar" />
+                    @click="() => EventBus.emit('ROUTER_TO:CHOOSE_PROJECT')" />
             </div>
             <div class="btn2">
                 <RoundedIconTextButton
@@ -156,8 +157,7 @@
                     :icon="IconChevronDoubleRight"
                     text="访问项目"
                     :primary="true"
-                    @click="sar" />
-                <!-- EventBus.emit('ROUTER:TO', '/sonolight') -->
+                    @click="() => EventBus.emit('ROUTER_TO:CHOOSE_PROJECT')" />
             </div>
             <div class="btn2">
                 <RoundedIconTextButton

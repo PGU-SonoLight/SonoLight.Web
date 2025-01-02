@@ -18,7 +18,7 @@ coverage
 /cypress/screenshots/
 
 # Editor directories and files
-.vscode/*
+.vscode/settings.json
 !.vscode/extensions.json
 .idea
 *.suo
@@ -28,7 +28,3 @@ coverage
 *.sw?
 
 *.tsbuildinfo
-
-# Utils
-/utils/
-genfont.ps1

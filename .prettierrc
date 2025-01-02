@@ -1,7 +1,0 @@
-{
-    "endOfLine": "crlf",
-    "bracketSameLine": true,
-    "tabWidth": 4,
-    "vueIndentScriptAndStyle": true,
-    "printWidth": 80
-}

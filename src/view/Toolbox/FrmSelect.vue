@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+    import Laptop from "@/app/Toolbox/Select/Laptop.vue";
     import CompResponsive from "@/components/CompResponsive.vue";
-    import Laptop from "@/app/Home/Laptop.vue";
 </script>
 
 <template>

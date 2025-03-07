@@ -1,27 +1,38 @@
-import { createRouter, createWebHistory } from "vue-router";
+import {
+    createRouter,
+    createWebHistory,
+    type RouteRecordRaw,
+} from "vue-router";
 
-const PanelRoutes = [
+const PanelRoutes: RouteRecordRaw[] = [
     {
         path: "/panel/login",
-        component: () => import("@/ui/layouts/panel/LayoutLogin.vue"),
+        component: () => import("@/app/panel/LayoutLogin.vue"),
     },
 ];
 
-const BlogRoutes = [
+const BlogRoutes: RouteRecordRaw[] = [
     {
         path: "/blog",
         redirect: "/error/403",
     },
 ];
 
-const ErrorRoutes = [
+const MoreRoutes: RouteRecordRaw[] = [
+    {
+        path: "/more/contact-us",
+        component: () => import("@/app/more/LayoutContactus.vue"),
+    },
+];
+
+const ErrorRoutes: RouteRecordRaw[] = [
     {
         path: "/error/403",
-        component: () => import("@/ui/layouts/errors/Layout403.vue"),
+        component: () => import("@/app/errors/Layout403.vue"),
     },
     {
         path: "/error/404",
-        component: () => import("@/ui/layouts/errors/Layout404.vue"),
+        component: () => import("@/app/errors/Layout404.vue"),
     },
     // Auto Catch Unmatched Routes
     {
@@ -36,14 +47,11 @@ const router = createRouter({
         // Home
         {
             path: "/",
-            component: () => import("@/ui/layouts/LayoutHome.vue"),
+            component: () => import("@/app/LayoutHome.vue"),
         },
         ...PanelRoutes,
         ...BlogRoutes,
-        {
-            path: "/contact-us",
-            redirect: "/error/403",
-        },
+        ...MoreRoutes,
         ...ErrorRoutes,
     ],
 });

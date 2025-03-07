@@ -3,7 +3,9 @@
 <template>
     <header class="w-full h-2/24 px-16 flex justify-between items-center">
         <section>
-            <span class="text-secondary text-lg">声致发光</span>
+            <a class="text-secondary text-lg" @click="$router.push(`/`)">
+                声致发光
+            </a>
         </section>
         <section
             class="flex justify-center items-center gap-12"
@@ -22,7 +24,7 @@
             <a @click="$router.push(`/blog`)">
                 <span class="text-secondary text-lg">博客</span>
             </a>
-            <a @click="$router.push(`/contact-us`)">
+            <a @click="$router.push(`/more/contact-us`)">
                 <span class="text-secondary text-lg">联系我们</span>
             </a>
         </section>

@@ -20,7 +20,9 @@ body {
 
 @import "tailwindcss";
 
-@plugin "daisyui";
+@plugin "daisyui" {
+    exclude: rootscrollgutter;
+}
 
 @plugin "daisyui/theme" {
     name: "sonolight";
@@ -47,14 +49,14 @@ body {
     --color-warning-content: oklch(27% 0.077 45.635);
     --color-error: oklch(70% 0.191 22.216);
     --color-error-content: oklch(25% 0.092 26.042);
-    --radius-selector: 0.25rem;
-    --radius-field: 0.5rem;
+    --radius-selector: 0.5rem;
+    --radius-field: 0.25rem;
     --radius-box: 0.5rem;
     --size-selector: 0.25rem;
     --size-field: 0.25rem;
     --border: 1px;
     --depth: 1;
-    --noise: 1;
+    --noise: 0;
 }
 
 @plugin "daisyui/theme" {

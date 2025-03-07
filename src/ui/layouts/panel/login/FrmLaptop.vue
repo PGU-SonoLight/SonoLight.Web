@@ -15,7 +15,7 @@
 </script>
 
 <template>
-    <div id="FrmHomeLaptop" class="w-screen h-screen overflow-hidden">
+    <div id="Frm" class="w-screen h-screen overflow-hidden">
         <CompHeader middle />
         <main
             class="w-full h-21/24 pb-12 flex flex-col justify-center items-center">
@@ -232,7 +232,7 @@
 </template>
 
 <style lang="scss" scoped>
-    div#FrmHomeLaptop {
+    div#Frm {
         background: linear-gradient(
                 to right,
                 color-mix(in oklab, var(--color-primary), transparent 10%),

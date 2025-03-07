@@ -4,13 +4,13 @@
 </script>
 
 <template>
-    <div id="Frm404Laptop" class="w-screen h-screen overflow-hidden">
+    <div id="Frm" class="w-screen h-screen overflow-hidden">
         <CompHeader />
         <main
             class="w-full h-21/24 pb-12 flex flex-col justify-center items-center">
-            <h1 class="text-secondary text-6xl">前面的区域，以后再来探索吧！</h1>
+            <h1 class="text-secondary text-6xl">这里... 什么都没有呢...</h1>
             <br />
-            <p class="text-secondary text-xl">您所请求的内容目前无法访问</p>
+            <p class="text-secondary text-xl">没有找到您所请求的内容</p>
             <br />
             <button
                 class="btn btn-secondary scale-110"
@@ -23,7 +23,7 @@
 </template>
 
 <style lang="scss" scoped>
-    div#Frm404Laptop {
+    div#Frm {
         background: linear-gradient(
                 to right,
                 color-mix(in oklab, var(--color-primary), transparent 30%),

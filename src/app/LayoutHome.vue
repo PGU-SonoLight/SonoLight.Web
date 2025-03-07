@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import CompResponsive from "@/ui/components/CompResponsive.vue";
-    import FrmLaptop from "@/ui/frames/errors/404/FrmLaptop.vue";
+    import FrmLaptop from "@/ui/layouts/home/FrmLaptop.vue";
 </script>
 
 <template>
